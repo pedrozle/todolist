@@ -187,3 +187,58 @@ footer {
   align-items: center;
   gap: 20px;
 }
+
+/* Adiciona responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 3em;
+  }
+
+  .input {
+    flex-direction: column;
+    align-items: stretch;
+
+    & input {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    & button {
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+
+  .lists {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .input {
+    & input {
+      height: 35px;
+    }
+
+    & button {
+      height: 37px;
+    }
+  }
+
+  .list .title {
+    font-size: 1.2em;
+  }
+}
