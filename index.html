@@ -5,8 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
     <link rel="stylesheet" href="src/styles/index.css" />
+    <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon" />
   </head>
   <body>
+    <header>
+      <button id="dark" onclick="setTheme('dark')"></button>
+      <button id="light" onclick="setTheme('light')"></button>
+    </header>
+    <main>
+      <div class="container">
+        <p class="title">To-Do List.</p>
+        <div class="input">
+          <input type="text" />
+          <button>Vou fazer!</button>
+        </div>
+        <section class="lists">
+          <div class="list" id="todo">
+            <div class="title">A fazer</div>
+            <div class="tasks">
+              <div class="task">
+                <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+                <div class="btns">
+                  <button>✔️</button>
+                  <button>✖️</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list" id="done">
+            <div class="title">Feito!</div>
+            <div class="tasks">
+              <div class="task">
+                <p>aasasasasasas</p>
+                <div class="btns">
+                  <button>✔️</button>
+                  <button>✖️</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>To-Do List</p>
+      <p>Feito com ❤️ por</p>
+      <a href="https://pedrozle.github.io">Pedrozle</a>
+    </footer>
     <script src="src/js/index.js"></script>
   </body>
 </html>
