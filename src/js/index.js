@@ -11,6 +11,8 @@ window.onload = () => {
     tasks = JSON.parse(lstorage);
     populateLists();
   }
+
+  enableDragAndDrop();
 };
 
 function populateLists() {
@@ -54,7 +56,9 @@ function populateLists() {
 
     task.appendChild(p);
     task.appendChild(btns);
-    task.classList.add("task"); // opcional: classe para estilização
+    task.classList.add("task");
+
+    makeTaskDraggable(task, elem);
 
     todo.appendChild(task);
   });
@@ -74,7 +78,9 @@ function populateLists() {
 
     task.appendChild(p);
     task.appendChild(btns);
-    task.classList.add("task"); // opcional: classe para estilização
+    task.classList.add("task");
+
+    makeTaskDraggable(task, elem);
 
     done.appendChild(task);
   });
@@ -123,7 +129,6 @@ function saveTodo() {
 function setTheme(theme) {
   document.body.className = "";
 
-  // Adiciona a nova classe
   if (!theme) {
     document.body.classList.add("light");
     localStorage.setItem("theme", "light");
@@ -132,4 +137,42 @@ function setTheme(theme) {
 
   document.body.classList.add(theme);
   localStorage.setItem("theme", theme);
+}
+
+// Adiciona funcionalidade de drag and drop
+function enableDragAndDrop() {
+  const todoTasks = document.getElementById("todo-tasks");
+  const doneTasks = document.getElementById("done-tasks");
+
+  [todoTasks, doneTasks].forEach((list) => {
+    list.addEventListener("dragover", (event) => {
+      event.preventDefault();
+    });
+
+    list.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const taskId = event.dataTransfer.getData("text/plain");
+      const taskElement = document.getElementById(taskId);
+
+      if (list.id === "done-tasks") {
+        const task = tasks.todo.find((t) => t.id == taskId);
+        completeTask(task);
+      } else if (list.id === "todo-tasks") {
+        const task = tasks.done.find((t) => t.id == taskId);
+        tasks.done = tasks.done.filter((t) => t.id != taskId);
+        tasks.todo.push(task);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        populateLists();
+      }
+    });
+  });
+}
+
+function makeTaskDraggable(taskElement, task) {
+  taskElement.setAttribute("draggable", true);
+  taskElement.setAttribute("id", task.id);
+
+  taskElement.addEventListener("dragstart", (event) => {
+    event.dataTransfer.setData("text/plain", task.id);
+  });
 }
