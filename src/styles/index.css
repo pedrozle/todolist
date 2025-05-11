@@ -123,12 +123,11 @@ main {
   display: flex;
   gap: 40px;
 
-  & #done{
-    & p{
-        text-decoration: line-through;
+  & #done {
+    & p {
+      text-decoration: line-through;
     }
   }
-
 }
 
 .list {

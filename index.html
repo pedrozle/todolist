@@ -16,32 +16,17 @@
       <div class="container">
         <p class="title">To-Do List.</p>
         <div class="input">
-          <input type="text" />
-          <button>Vou fazer!</button>
+          <input type="text" id="todo-text" placeholder="Nova tarefa" />
+          <button onclick="saveTodo()">Vou fazer!</button>
         </div>
         <section class="lists">
           <div class="list" id="todo">
             <div class="title">A fazer</div>
-            <div class="tasks">
-              <div class="task">
-                <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <div class="btns">
-                  <button>✔️</button>
-                  <button>✖️</button>
-                </div>
-              </div>
-            </div>
+            <div class="tasks" id="todo-tasks"></div>
           </div>
           <div class="list" id="done">
             <div class="title">Feito!</div>
-            <div class="tasks">
-              <div class="task">
-                <p>aasasasasasas</p>
-                <div class="btns">
-                  <button>✔️</button>
-                  <button>✖️</button>
-                </div>
-              </div>
+            <div class="tasks" id="done-tasks">
             </div>
           </div>
         </section>
